@@ -10,10 +10,9 @@ stages:
     - parallel_job_test
     
 before_script:
-#    - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
+#    - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev python3
     - apk update
     - apk add python3
-    - apk add nodejs
 
 
 dev_app_deploy:
@@ -28,7 +27,7 @@ dev_app_deploy:
 dev_regression_test:
     stage: test_dev
     script:
-        - which nodejs
+        - which python3
     environment:
         name: Development
     when: on_success
@@ -38,7 +37,7 @@ dev_regression_test:
 tst_app_deploy:
     stage: deploy_tst
     script:
-        - which nodejs
+        - which python3
     when: manual
     environment:
         name: Testing
@@ -49,7 +48,7 @@ tst_app_deploy:
 tst_regression_test:
     stage: test_tst
     script:
-        - which nodejs
+        - which python3
     when: on_success
     environment:
         name: Testing
@@ -59,7 +58,7 @@ tst_regression_test:
 prd_app_deploy:
     stage: deploy_prd
     script:
-        - which nodejs
+        - which python3
     environment:
         name: Production
     when: manual
@@ -70,7 +69,7 @@ prd_app_deploy:
 prd_regression_test:
     stage: test_prd
     script:
-        - which nodejs
+        - which python3
     environment:
         name: Production
     when: on_success
@@ -80,7 +79,7 @@ prd_regression_test:
 parallel_test_job_1:
     stage: parallel_job_test
     script:
-        - which nodejs
+        - which python3
     environment:
         name: Production
     when: on_success
@@ -90,7 +89,7 @@ parallel_test_job_1:
 parallel_test_job_2:
     stage: parallel_job_test
     script:
-        - which nodejs
+        - which python3
     environment:
         name: Production
     when: on_success
