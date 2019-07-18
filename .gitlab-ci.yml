@@ -18,7 +18,7 @@ dev_app_deploy:
     script:
         - bundle exec rubocop
     only:  
-        -master
+        - master
 
 dev_regression_test:
     stage: test_dev
