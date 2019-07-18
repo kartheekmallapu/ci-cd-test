@@ -1,9 +1,9 @@
 stages:
     - deploy_dev
-    - deploy_tst
-    - deploy_prd
     - test_dev
+    - deploy_tst
     - test_tst
+    - deploy_prd
     - test_prd
     
 before_script:
