@@ -14,6 +14,8 @@ dev_app_deploy:
     stage: deploy_dev
     script:
         - python helloworld.py
+    environment:
+        name: Testing
     only:  
         - master
 
@@ -21,6 +23,8 @@ dev_regression_test:
     stage: test_dev
     script:
         - which nodejs
+    environment:
+        name: Development
     only: 
         - master
 
@@ -28,7 +32,11 @@ tst_app_deploy:
     stage: deploy_tst
     script:
         - which nodejs
-    when: manual
+    when: 
+        - manual
+        - on_success
+    environment:
+        name: Testing
     only: 
         - master
     
@@ -36,6 +44,8 @@ tst_regression_test:
     stage: test_tst
     script:
         - which nodejs
+    environment:
+        name: Testing
     only: 
         - master
     
@@ -43,7 +53,11 @@ prd_app_deploy:
     stage: deploy_prd
     script:
         - which nodejs
-    when: manual
+    environment:
+        name: Production
+    when: 
+        - manual
+        - on_success
     only: 
         - master
     
@@ -51,5 +65,7 @@ prd_regression_test:
     stage: test_prd
     script:
         - which nodejs
+    environment:
+        name: Production
     only: 
         - master
