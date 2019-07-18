@@ -1,5 +1,7 @@
 stages:
-    - deploy
+    - deploy_dev
+    - deploy_tst
+    - deploy_prd
     - test
     
 before_script:
@@ -9,17 +11,31 @@ before_script:
     - gem install bundler --no-document
     - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
-dev:
+dev_app_deploy:
+    stage: deploy_dev
+    script:
+        - bundle exec rubocop
+
+dev_regression_test:
     stage: test
     script:
         - bundle exec rspec
 
-tst:
-    stage: deploy
+tst_app_deploy:
+    stage: deploy_tst
     script:
         - bundle exec rubocop
 
-prd:
-    stage: deploy
+tst_regression_test:
+    stage: test
+    script:
+        - bundle exec rspec
+prd_app_deploy:
+    stage: deploy_prd
     script:
         - bundle exec rubocop
+
+prd_regression_test:
+    stage: test
+    script:
+        - bundle exec rspec
