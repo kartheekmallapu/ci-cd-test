@@ -34,7 +34,6 @@ tst_app_deploy:
         - which nodejs
     when: 
         - manual
-        - on_success
     environment:
         name: Testing
     only: 
@@ -57,7 +56,6 @@ prd_app_deploy:
         name: Production
     when: 
         - manual
-        - on_success
     only: 
         - master
     
@@ -67,5 +65,7 @@ prd_regression_test:
         - which nodejs
     environment:
         name: Production
+    when: 
+        - on_success
     only: 
         - master
