@@ -25,6 +25,7 @@ dev_regression_test:
         - which nodejs
     environment:
         name: Development
+    when: on_success
     only: 
         - master
 
@@ -53,8 +54,7 @@ prd_app_deploy:
         - which nodejs
     environment:
         name: Production
-    when: 
-        - manual
+    when: manual
     only: 
         - master
     
@@ -64,7 +64,6 @@ prd_regression_test:
         - which nodejs
     environment:
         name: Production
-    when: 
-        - on_success
+    when: on_success
     only: 
         - master
