@@ -5,6 +5,7 @@ stages:
     - test_tst
     - deploy_prd
     - test_prd
+    - test_dev, test_tst, test_prd
     
 before_script:
     - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
