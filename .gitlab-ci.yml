@@ -7,7 +7,7 @@ stages:
     - test_tst
     - deploy_prd
     - test_prd
-    - test_dev, test_tst, test_prd
+    - parallel_job_test
     
 before_script:
     - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
@@ -66,6 +66,26 @@ prd_app_deploy:
     
 prd_regression_test:
     stage: test_prd
+    script:
+        - which nodejs
+    environment:
+        name: Production
+    when: on_success
+    only: 
+        - master
+
+parallel_test_job_1:
+    stage: parallel_job_test
+    script:
+        - which nodejs
+    environment:
+        name: Production
+    when: on_success
+    only: 
+        - master
+        
+parallel_test_job_2:
+    stage: parallel_job_test
     script:
         - which nodejs
     environment:
