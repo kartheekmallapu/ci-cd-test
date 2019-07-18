@@ -2,7 +2,9 @@ stages:
     - deploy_dev
     - deploy_tst
     - deploy_prd
-    - test
+    - test_dev
+    - test_tst
+    - test_prd
     
 before_script:
     - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
@@ -17,7 +19,7 @@ dev_app_deploy:
         - bundle exec rubocop
 
 dev_regression_test:
-    stage: test
+    stage: test_dev
     script:
         - bundle exec rspec
 
@@ -27,7 +29,7 @@ tst_app_deploy:
         - bundle exec rubocop
 
 tst_regression_test:
-    stage: test
+    stage: test_tst
     script:
         - bundle exec rspec
 prd_app_deploy:
@@ -36,6 +38,6 @@ prd_app_deploy:
         - bundle exec rubocop
 
 prd_regression_test:
-    stage: test
+    stage: test_prd
     script:
         - bundle exec rspec
