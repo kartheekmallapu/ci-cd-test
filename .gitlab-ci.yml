@@ -12,16 +12,14 @@ stages:
 before_script:
 #    - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
     - apk update
-    - apk search python
-    - apk add python3-dev-3.7.3-r0
-    - apk search nodejs
-    - apk add nodejs-10.16.0-r0
+    - apk add python3
+    - apk add nodejs
 
 
 dev_app_deploy:
     stage: deploy_dev
     script:
-        - python helloworld.py
+        - python3 helloworld.py
     environment:
         name: Testing
     only:  
