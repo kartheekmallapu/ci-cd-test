@@ -32,8 +32,7 @@ tst_app_deploy:
     stage: deploy_tst
     script:
         - which nodejs
-    when: 
-        - manual
+    when: manual
     environment:
         name: Testing
     only: 
