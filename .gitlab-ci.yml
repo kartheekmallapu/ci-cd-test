@@ -14,7 +14,7 @@ dev_app_deploy:
     stage: deploy_dev
     script:
         - bundle exec rubocop
-        - 
+        - python helloworld.py
     only:  
         - master
 
