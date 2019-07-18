@@ -36,6 +36,7 @@ tst_app_deploy:
     when: manual
     environment:
         name: Testing
+    allow_failure: false
     only: 
         - master
     
@@ -43,6 +44,7 @@ tst_regression_test:
     stage: test_tst
     script:
         - which nodejs
+    when: on_success
     environment:
         name: Testing
     only: 
@@ -55,6 +57,7 @@ prd_app_deploy:
     environment:
         name: Production
     when: manual
+    allow_failure: false
     only: 
         - master
     
