@@ -13,7 +13,6 @@ before_script:
 dev_app_deploy:
     stage: deploy_dev
     script:
-        - bundle exec rubocop
         - python helloworld.py
     only:  
         - master
@@ -21,14 +20,14 @@ dev_app_deploy:
 dev_regression_test:
     stage: test_dev
     script:
-        - bundle exec rspec
+        - which nodejs
     only: 
         - master
 
 tst_app_deploy:
     stage: deploy_tst
     script:
-        - bundle exec rubocop
+        - which nodejs
     when: manual
     only: 
         - master
@@ -36,14 +35,14 @@ tst_app_deploy:
 tst_regression_test:
     stage: test_tst
     script:
-        - bundle exec rspec
+        - which nodejs
     only: 
         - master
     
 prd_app_deploy:
     stage: deploy_prd
     script:
-        - bundle exec rubocop
+        - which nodejs
     when: manual
     only: 
         - master
@@ -51,6 +50,6 @@ prd_app_deploy:
 prd_regression_test:
     stage: test_prd
     script:
-        - bundle exec rspec
+        - which nodejs
     only: 
         - master
