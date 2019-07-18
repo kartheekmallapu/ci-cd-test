@@ -15,8 +15,8 @@ dev:
         - bundle exec rspec
 
 tst:
-    script:
     stage: deploy
+    script:
         - bundle exec rubocop
 
 prd:
