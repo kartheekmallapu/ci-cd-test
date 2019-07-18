@@ -1,5 +1,11 @@
-image: alpine 
+# this is a sample gitlab pipeline job
+# By having a file called .gitlab-ci.yml in the project root
+# Gitlab will automatically create a pipeline for the gitlab repo hosing the file
 
+image: alpine # Use Alpine linux image for containers
+
+# stages control the flow of the pipeline allowing admin to set the order of steps
+# steps that implement the same stage will run in parallel
 stages:
     - deploy_dev
     - test_dev
@@ -9,8 +15,13 @@ stages:
     - test_prd
     - parallel_job_test
     
-before_script:
+
+before_script: # This will execute on any container prior to running the defined script
+
+# The following package manager works for ruby 2.5 linux images
 #    - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev python3
+
+# The following package manager works on Alpine Linux
     - apk update
     - apk add python3
 
