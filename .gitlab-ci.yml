@@ -2,6 +2,8 @@
 # By having a file called .gitlab-ci.yml in the project root
 # Gitlab will automatically create a pipeline for the gitlab repo hosing the file
 
+# Created by James Martin (jmartin@sxiq.com.au)
+
 image: alpine # Use Alpine linux image for containers
 
 # stages control the flow of the pipeline allowing admin to set the order of steps
