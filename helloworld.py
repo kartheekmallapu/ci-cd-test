@@ -1,3 +1,3 @@
 
-print("Test Step: Deploy TST")
-print("Hello Orica!")
+print("programming stuff")
+print("Hello Craig!")
