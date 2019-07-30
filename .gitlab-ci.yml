@@ -41,11 +41,15 @@ dev_regression_test:
     stage: test_dev
     script:
         - which python3
+        - cat /tmp/tempcreds
     environment:
         name: Development
     when: on_success
     only: 
         - master
+    tags:
+        - awsproduction
+
 
 tst_app_deploy:
     stage: deploy_tst

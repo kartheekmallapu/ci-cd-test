@@ -1,3 +1,1 @@
-
-print("programming stuff")
-print("Hello Craig!")
+print("Hello Orica!")
